@@ -1,6 +1,7 @@
 package conexion;
 
 import javax.swing.*;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,6 +9,7 @@ import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Host implements Runnable {
@@ -31,17 +33,20 @@ public class Host implements Runnable {
     public void run() {
         try {
             String str = "";
-            Scanner sc = new Scanner(System.in);
             Socket cliente = null;
-
+            String finEspera = "";
             // Acepta la conexión de los clientes
-            while (sc.hasNext()) {
-                cliente = socket.accept();
+            while (!finEspera.equals("\n")) {
+                Scanner sc = new Scanner(System.in);
                 System.out.println("Esperando conexión...");
+                cliente = socket.accept();
+
                 // Cuenta la cantidad de clientes conectados
                 cuenta++;
                 System.out.println("Ha entrado el Cliente nº " + cuenta);
                 clientesConectados.add(cliente);
+                // Da capacidad de parar el bucle
+                finEspera = sc.nextLine();
             }
 
             while (!str.equalsIgnoreCase("salir")) {
