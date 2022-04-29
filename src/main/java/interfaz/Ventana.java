@@ -1,3 +1,5 @@
+package interfaz;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -35,8 +37,7 @@ public class Ventana extends JDialog {
     }
 
     private void onOK() {
-        // add your code here
-        dispose();
+        envio(textField.getText());
     }
 
     private void onCancel() {

@@ -44,9 +44,5 @@ public class Cliente {
             System.out.println("Exception " + e);
         }
     }
-
-    public static void main(String[] args) throws Exception {
-        new Cliente("192.168.12.239", 8080);
-    }
 }
 
