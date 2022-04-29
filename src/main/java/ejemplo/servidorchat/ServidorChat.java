@@ -7,22 +7,12 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/**
- * Servidor para el chat.
- *
- * @author Ivan Salas Corrales <http://programandoointentandolo.com>
- */
 
 public class ServidorChat {
-
-    /**
-     * @param args the command line arguments
-     */
-
     public static void main(String[] args) {
 
         // Carga el archivo de configuracion de log4J
-        PropertyConfigurator.configure("src/main/java/ejemplo/servidorchat/log4j.properties");
+        PropertyConfigurator.configure("src/main/resources/log4j.properties");
         Logger log = Logger.getLogger(ServidorChat.class);
 
         int puerto = 1234;

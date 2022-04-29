@@ -9,24 +9,12 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import org.apache.log4j.Logger;
 
-/**
- * Una sencilla ventana para configurar el chat
- *
- * @author Ivan Salas Corrales <http://programandoointentandolo.com/>
- */
-
 public class VentanaConfiguracion extends JDialog{
 
-    private Logger log = Logger.getLogger(VentanaConfiguracion.class);
-    private JTextField tfUsuario;
-    private JTextField tfHost;
-    private JTextField tfPuerto;
-
-    /**
-     * Constructor de la ventana de configuracion inicial
-     *
-     * @param padre Ventana padre
-     */
+    private final Logger log = Logger.getLogger(VentanaConfiguracion.class);
+    private final JTextField tfUsuario;
+    private final JTextField tfHost;
+    private final JTextField tfPuerto;
 
     public VentanaConfiguracion(JFrame padre) {
         super(padre, "Configuracion inicial", true);

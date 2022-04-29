@@ -8,13 +8,6 @@ import java.util.Observable;
 import java.util.Observer;
 import org.apache.log4j.Logger;
 
-
-/**
- * Esta clase gestiona el envio de datos entre el servidor y el cliente al que atiende.
- *
- * @author Ivan Salas Corrales <http://programandoointentandolo.com>
- */
-
 public class ConexionCliente extends Thread implements Observer{
 
     private Logger log = Logger.getLogger(ConexionCliente.class);
