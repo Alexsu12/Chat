@@ -12,16 +12,10 @@ import javax.swing.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-/**
- * Clase principal del cliente del chat
- *
- * @author Ivan Salas Corrales <http://programandoointentandolo.com>
- */
-
 public class ClienteChat extends JFrame {
 
-    private Logger log = Logger.getLogger(ClienteChat.class);
-    private JTextArea mensajesChat;
+    private final Logger log = Logger.getLogger(ClienteChat.class);
+    private final JTextArea mensajesChat;
     private Socket socket;
 
     private int puerto;
@@ -99,10 +93,6 @@ public class ClienteChat extends JFrame {
 
     }
 
-    /**
-     * Recibe los mensajes del chat reenviados por el servidor
-     */
-
     public void recibirMensajesServidor(){
         // Obtiene el flujo de entrada del socket
         DataInputStream entradaDatos = null;
@@ -131,13 +121,9 @@ public class ClienteChat extends JFrame {
         }
     }
 
-    /**
-     * @param args the command line arguments
-     */
-
     public static void main(String[] args) {
         // Carga el archivo de configuracion de log4J
-        PropertyConfigurator.configure("src/main/java/ejemplo/servidorchat/log4j.properties");
+        PropertyConfigurator.configure("src/main/java/ejemplo/clientechat/log4j.properties");
 
         ClienteChat c = new ClienteChat();
         c.recibirMensajesServidor();

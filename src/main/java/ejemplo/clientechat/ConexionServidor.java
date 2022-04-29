@@ -8,12 +8,6 @@ import java.net.Socket;
 import javax.swing.JTextField;
 import org.apache.log4j.Logger;
 
-/**
- * Esta clase gestiona el envio de datos entre el cliente y el servidor.
- *
- * @author Ivan Salas Corrales <http://programandoointentandolo.com>
- */
-
 public class ConexionServidor implements ActionListener {
 
     private Logger log = Logger.getLogger(ConexionServidor.class);

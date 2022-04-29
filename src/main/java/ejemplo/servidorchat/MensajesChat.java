@@ -2,12 +2,6 @@ package ejemplo.servidorchat;
 
 import java.util.Observable;
 
-/**
- * Objeto observable del patron observer.
- *
- * @author Ivan Salas Corrales <http://programandoointentandolo.com>
- */
-
 public class MensajesChat extends Observable{
 
     private String mensaje;
