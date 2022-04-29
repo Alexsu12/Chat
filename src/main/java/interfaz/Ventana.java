@@ -37,7 +37,7 @@ public class Ventana extends JDialog {
     }
 
     private void onOK() {
-        envio(textField.getText());
+        textArea.setText(textField.getText());
     }
 
     private void onCancel() {

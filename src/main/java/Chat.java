@@ -2,7 +2,6 @@ import conexion.Cliente;
 import conexion.Host;
 
 import javax.swing.*;
-import java.text.ParseException;
 
 public class Chat {
     private boolean host;
