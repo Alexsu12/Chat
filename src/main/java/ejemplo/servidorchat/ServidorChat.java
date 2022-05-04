@@ -11,12 +11,12 @@ import java.net.Socket;
 public class ServidorChat {
     public static void main(String[] args) {
 
-        // Carga el archivo de configuracion de log4J
+        // Carga el archivo de configuración de log4J
         PropertyConfigurator.configure("src/main/resources/log4j.properties");
         Logger log = Logger.getLogger(ServidorChat.class);
 
         int puerto = 1234;
-        int maximoConexiones = 10; // Maximo de conexiones simultaneas
+        int maximoConexiones = 10; // Máximo de conexiones simultaneas
         ServerSocket servidor = null;
         Socket socket = null;
         MensajesChat mensajes = new MensajesChat();
@@ -39,6 +39,7 @@ public class ServidorChat {
             log.error("Error: " + ex.getMessage());
         } finally{
             try {
+                assert socket != null;
                 socket.close();
                 servidor.close();
             } catch (IOException ex) {

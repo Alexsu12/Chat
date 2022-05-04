@@ -10,9 +10,9 @@ import org.apache.log4j.Logger;
 
 public class ConexionCliente extends Thread implements Observer{
 
-    private Logger log = Logger.getLogger(ConexionCliente.class);
-    private Socket socket;
-    private MensajesChat mensajes;
+    private final Logger log = Logger.getLogger(ConexionCliente.class);
+    private final Socket socket;
+    private final MensajesChat mensajes;
     private DataInputStream entradaDatos;
     private DataOutputStream salidaDatos;
 
@@ -45,7 +45,7 @@ public class ConexionCliente extends Thread implements Observer{
             } catch (IOException ex) {
                 log.info("Cliente con la IP " + socket.getInetAddress().getHostName() + " desconectado.");
                 conectado = false;
-                // Si se ha producido un error al recibir datos del cliente se cierra la conexion con el.
+                // Si se ha producido un error al recibir datos del cliente se cierra la conexión con él.
                 try {
                     entradaDatos.close();
                     salidaDatos.close();
@@ -59,7 +59,7 @@ public class ConexionCliente extends Thread implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         try {
-            // Envia el mensaje al cliente
+            // Envía el mensaje al cliente
             salidaDatos.writeUTF(arg.toString());
         } catch (IOException ex) {
             log.error("Error al enviar mensaje al cliente (" + ex.getMessage() + ").");

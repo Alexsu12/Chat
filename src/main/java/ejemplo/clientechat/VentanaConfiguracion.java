@@ -1,13 +1,9 @@
 package ejemplo.clientechat;
 
-import java.awt.Container;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.*;
 import org.apache.log4j.Logger;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class VentanaConfiguracion extends JDialog{
 
@@ -17,7 +13,7 @@ public class VentanaConfiguracion extends JDialog{
     private final JTextField tfPuerto;
 
     public VentanaConfiguracion(JFrame padre) {
-        super(padre, "Configuracion inicial", true);
+        super(padre, "Configuración inicial", true);
 
         JLabel lbUsuario = new JLabel("Usuario:");
         JLabel lbHost = new JLabel("Host:");
@@ -28,13 +24,7 @@ public class VentanaConfiguracion extends JDialog{
         tfPuerto = new JTextField("1234");
 
         JButton btAceptar = new JButton("Aceptar");
-        btAceptar.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-            }
-        });
+        btAceptar.addActionListener(e -> setVisible(false));
 
         Container c = this.getContentPane();
         c.setLayout(new GridBagLayout());
@@ -75,10 +65,10 @@ public class VentanaConfiguracion extends JDialog{
         gbc.insets = new Insets(20, 20, 20, 20);
         c.add(btAceptar, gbc);
 
-        this.pack(); // Le da a la ventana el minimo tamaño posible
-        this.setLocation(450, 200); // Posicion de la ventana
+        this.pack(); // Le da a la ventana el mínimo tamaño posible
+        this.setLocation(450, 200); // Posición de la ventana
         this.setResizable(false); // Evita que se pueda estirar la ventana
-        this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE); // Deshabilita el boton de cierre de la ventana
+        this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE); // Deshabilita el botón de cierre de la ventana
         this.setVisible(true);
     }
 

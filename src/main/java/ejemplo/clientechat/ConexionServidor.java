@@ -10,14 +10,12 @@ import org.apache.log4j.Logger;
 
 public class ConexionServidor implements ActionListener {
 
-    private Logger log = Logger.getLogger(ConexionServidor.class);
-    private Socket socket;
-    private JTextField tfMensaje;
-    private String usuario;
+    private final Logger log = Logger.getLogger(ConexionServidor.class);
+    private final JTextField tfMensaje;
+    private final String usuario;
     private DataOutputStream salidaDatos;
 
     public ConexionServidor(Socket socket, JTextField tfMensaje, String usuario) {
-        this.socket = socket;
         this.tfMensaje = tfMensaje;
         this.usuario = usuario;
         try {
