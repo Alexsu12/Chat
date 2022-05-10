@@ -1,26 +1,21 @@
-package ejemplo.servidorchat;
+package ejemplo.servidorchat
 
-import java.util.Observable;
+import java.util.*
 
-public class MensajesChat extends Observable{
+class MensajesChat : Observable() {
+    // Indica que el mensaje ha cambiado
 
-    private String mensaje;
+    // Notifica a los observadores que el mensaje ha cambiado y se lo pasa
+    // (Internamente notifyObservers llama al método update del observador)
+    var mensaje: String? = null
+        set(mensaje) {
+            field = mensaje
 
-    public MensajesChat(){
-    }
+            // Indica que el mensaje ha cambiado
+            setChanged()
 
-    public String getMensaje(){
-        return mensaje;
-    }
-
-    public void setMensaje(String mensaje){
-        this.mensaje = mensaje;
-
-        // Indica que el mensaje ha cambiado
-        this.setChanged();
-
-        // Notifica a los observadores que el mensaje ha cambiado y se lo pasa
-        // (Internamente notifyObservers llama al método update del observador)
-        this.notifyObservers(this.getMensaje());
-    }
+            // Notifica a los observadores que el mensaje ha cambiado y se lo pasa
+            // (Internamente notifyObservers llama al método update del observador)
+            this.notifyObservers(this.mensaje)
+        }
 }

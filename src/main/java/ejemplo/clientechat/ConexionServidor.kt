@@ -1,39 +1,34 @@
-package ejemplo.clientechat;
+package ejemplo.clientechat
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
-import javax.swing.JTextField;
-import org.apache.log4j.Logger;
+import org.apache.log4j.Logger
+import java.awt.event.ActionEvent
+import java.awt.event.ActionListener
+import java.io.DataOutputStream
+import java.io.IOException
+import java.net.Socket
+import javax.swing.JTextField
 
-public class ConexionServidor implements ActionListener {
+class ConexionServidor(socket: Socket, private val tfMensaje: JTextField, private val usuario: String) :
+    ActionListener {
+    private val log = Logger.getLogger(ConexionServidor::class.java)
+    private var salidaDatos: DataOutputStream? = null
 
-    private final Logger log = Logger.getLogger(ConexionServidor.class);
-    private final JTextField tfMensaje;
-    private final String usuario;
-    private DataOutputStream salidaDatos;
-
-    public ConexionServidor(Socket socket, JTextField tfMensaje, String usuario) {
-        this.tfMensaje = tfMensaje;
-        this.usuario = usuario;
+    init {
         try {
-            this.salidaDatos = new DataOutputStream(socket.getOutputStream());
-        } catch (IOException ex) {
-            log.error("Error al crear el stream de salida : " + ex.getMessage());
-        } catch (NullPointerException ex) {
-            log.error("El socket no se creo correctamente. ");
+            salidaDatos = DataOutputStream(socket.getOutputStream())
+        } catch (ex: IOException) {
+            log.error("Error al crear el stream de salida : " + ex.message)
+        } catch (ex: NullPointerException) {
+            log.error("El socket no se creo correctamente. ")
         }
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
+    override fun actionPerformed(e: ActionEvent) {
         try {
-            salidaDatos.writeUTF(usuario + ": " + tfMensaje.getText() );
-            tfMensaje.setText("");
-        } catch (Exception ex) {
-            log.error("Error al intentar enviar un mensaje: " + ex.getMessage());
+            salidaDatos!!.writeUTF(usuario + ": " + tfMensaje.text)
+            tfMensaje.text = ""
+        } catch (ex: Exception) {
+            log.error("Error al intentar enviar un mensaje: " + ex.message)
         }
     }
 }
